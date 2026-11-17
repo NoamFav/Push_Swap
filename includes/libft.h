@@ -21,6 +21,7 @@
 # define BASE_10 "0123456789"
 
 size_t	ft_strlen(const char *str);
+int		ft_strcmp(const char *a, const char *b);
 int		ft_printf(const char *format, ...);
 int		dispatch(char c, va_list *ap);
 int		put_base(unsigned long n, char *base);

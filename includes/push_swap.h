@@ -16,6 +16,7 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 /* the 11 ops, in subject/bench order. OP_COUNT is the sentinel, not an op */
 typedef enum e_OPS
@@ -94,6 +95,11 @@ typedef void	(*t_opfn)(t_ctx *);
 */
 bool		ctx_init(t_ctx *ctx, int *values, size_t n);
 void		ctx_free(t_ctx *ctx);
+
+/* parsing */
+int			parse_args(int argc, char **argv, t_ctx *ctx, t_conf *conf);
+bool		parse_int(const char *s, int *out);
+bool		has_dup(const int *v, size_t n);
 
 /* read-only peeking. i is the position from the top, 0 = top */
 int			stack_get(const t_stack *s, size_t i);
