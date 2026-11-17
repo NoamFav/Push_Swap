@@ -6,9 +6,10 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 18:35:01 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/17 15:20:43 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/17 18:59:42 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -85,6 +86,8 @@ typedef struct s_conf
 	double		disorder;
 }	t_conf;
 
+typedef void	(*t_opfn)(t_ctx *);
+
 /*
 ** setup / teardown
 ** ctx_init takes the raw validated ints and normalises them to ranks.
@@ -93,13 +96,6 @@ typedef struct s_conf
 bool		ctx_init(t_ctx *ctx, int *values, size_t n);
 void		ctx_free(t_ctx *ctx);
 
-/* dispatcher: applies op, counts it, records it. false on malloc fail */
-bool		do_op(t_ctx *ctx, t_ops op);
-
-/* output */
-const char	*op_name(t_ops op);
-bool		ops_flush(t_ctx *ctx);
-
 /* read-only peeking. i is the position from the top, 0 = top */
 int			stack_get(const t_stack *s, size_t i);
 size_t		stack_min_pos(const t_stack *s);
@@ -107,6 +103,20 @@ size_t		stack_max_pos(const t_stack *s);
 bool		stack_is_sorted(const t_stack *s);
 
 /* stack edit, push becomes O(1) */
+bool		stack_init(t_stack *s, int *values, size_t n);
+void		stack_set(t_stack *s, size_t i, int v);
 void		stack_push(t_stack *s, int v);
 int			stack_pop(t_stack *s);
+/* op buffer */
+bool		opbuf_init(t_opbuf *buf, size_t n);
+bool		opbuf_push(t_opbuf *buf, t_ops op);
+void		opbuf_free(t_opbuf *buf);
+
+/* dispatcher: applies op, counts it, records it. false on malloc fail */
+bool		do_op(t_ctx *ctx, t_ops op);
+
+/* output */
+const char	*op_name(t_ops op);
+bool		ops_flush(t_ctx *ctx);
+
 #endif

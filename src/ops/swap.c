@@ -6,40 +6,35 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 12:03:46 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/17 12:11:26 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/17 15:31:32 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ops.h"
 
-void	swap_a(t_ctx *ctx)
+static void	swap(t_stack *s)
 {
 	int	tmp;
 
-	if (ctx->a.curr_size < 2)
+	if (s->curr_size < 2)
 		return ;
-	tmp = ctx->a.value[0];
-	ctx->a.value[0] = ctx->a.value[1];
-	ctx->a.value[1] = tmp;
-	ctx->ops.data[ctx->ops.len++] = SA;
-	ctx->counts[SA]++;
+	tmp = stack_get(s, 0);
+	stack_set(s, 0, stack_get(s, 1));
+	stack_set(s, 1, tmp);
+}
+
+void	swap_a(t_ctx *ctx)
+{
+	swap(&ctx->a);
 }
 
 void	swap_b(t_ctx *ctx)
 {
-	int	tmp;
-
-	if (ctx->b.curr_size < 2)
-		return ;
-	tmp = ctx->b.value[0];
-	ctx->b.value[0] = ctx->b.value[1];
-	ctx->b.value[1] = tmp;
-	ctx->ops.data[ctx->ops.len++] = SB;
-	ctx->counts[SB]++;
+	swap(&ctx->b);
 }
 
 void	swap_both(t_ctx *ctx)
 {
-	swap_a(ctx);
-	swap_b(ctx);
+	swap(&ctx->a);
+	swap(&ctx->b);
 }
