@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 18:35:01 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/16 18:52:14 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/17 15:20:43 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -106,9 +106,7 @@ size_t		stack_min_pos(const t_stack *s);
 size_t		stack_max_pos(const t_stack *s);
 bool		stack_is_sorted(const t_stack *s);
 
-/* op buffer */
-bool		opbuf_init(t_opbuf *buf, size_t n);
-bool		opbuf_push(t_opbuf *buf, t_ops op);
-void		opbuf_free(t_opbuf *buf);
-
+/* stack edit, push becomes O(1) */
+void		stack_push(t_stack *s, int v);
+int			stack_pop(t_stack *s);
 #endif
