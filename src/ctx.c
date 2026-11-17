@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 18:51:51 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/17 19:14:05 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/17 20:58:18 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,16 @@ bool	stack_init(t_stack *s, size_t cap, size_t curr)
 bool	ctx_init(t_ctx *ctx, int *values, size_t n)
 {
 	*ctx = (t_ctx){0};
-	if (!stack_init(&ctx->a, n, n))
-		return (false);
-	if (!stack_init(&ctx->b, n, 0))
+	if (!stack_init(&ctx->a, n, n)
+		|| !stack_init(&ctx->b, n, 0)
+		|| !opbuf_init(&ctx->ops, n))
 	{
-		free(ctx->a.value);
-		return (false);
-	}
-	if (opbuf_init(&ctx->ops, n))
-	{
-		free(ctx->a.value);
-		free(ctx->b.value);
+		ctx_free(ctx);
+		free(values);
 		return (false);
 	}
 	get_rank(&ctx->a, values, n);
+	free(values);
 	return (true);
 }
 

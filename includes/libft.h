@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 20:37:58 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/17 20:45:05 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/17 20:54:51 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -14,6 +14,7 @@
 
 # include <stdlib.h>
 # include <stdarg.h>
+# include <unistd.h>
 
 # define BASE_16_UP "0123456789ABCDEF"
 # define BASE_16 "0123456789abcdef"
