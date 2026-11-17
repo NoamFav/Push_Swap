@@ -70,7 +70,6 @@ typedef struct s_ctx
 	t_stack	b;
 	t_opbuf	ops;
 	int		counts[OP_COUNT];
-	bool	record;
 }	t_ctx;
 
 /*
@@ -103,7 +102,7 @@ size_t		stack_max_pos(const t_stack *s);
 bool		stack_is_sorted(const t_stack *s);
 
 /* stack edit, push becomes O(1) */
-bool		stack_init(t_stack *s, int *values, size_t n);
+bool		stack_init(t_stack *s, size_t cap, size_t curr);
 void		stack_set(t_stack *s, size_t i, int v);
 void		stack_push(t_stack *s, int v);
 int			stack_pop(t_stack *s);

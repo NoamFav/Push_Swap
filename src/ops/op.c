@@ -69,12 +69,9 @@ bool	do_op(t_ctx *ctx, t_ops op)
 		rrotate_a, rrotate_b, rrotate_both,
 	};
 
-	if (ctx->record)
-	{
-		if (!opbuf_push(&ctx->ops, op))
-			return (false);
-		ctx->counts[op]++;
-	}
+	if (!opbuf_push(&ctx->ops, op))
+		return (false);
+	ctx->counts[op]++;
 	table[op](ctx);
 	return (true);
 }
