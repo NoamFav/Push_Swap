@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 20:19:18 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/18 15:06:11 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/18 15:50:35 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	ops_flush(t_ctx *ctx)
 	while (++i < ops->len)
 	{
 		name = op_name(((t_ops){ops->data[i]}));
-		if (ft_printf("%s\n", name) == -1)
+		if (ft_dprintf(1, "%s\n", name) == -1)
 			return (false);
 	}
 	return (true);

@@ -11,16 +11,17 @@ SRCS	= push_swap.c \
 		  disorder.c \
 		  args/parser.c \
 		  args/parser_utils.c \
-		  libft/ft_strcmp.c \
+		  utils/ft_strcmp.c \
 		  ops/op.c \
 		  ops/push.c \
 		  ops/swap.c \
 		  ops/rotate.c \
 		  ops/rrotate.c \
-		  output/ft_printf.c \
-		  output/ft_strlen.c \
+		  utils/ft_dprintf.c \
+		  utils/ft_strlen.c \
+		  utils/dprintf_helpers.c \
+		  utils/dprintf_dispatch.c \
 		  output/output.c \
-		  output/printf_helpers.c \
 		  sort/simpminmax.c \
 		  sort/radix.c \
 		  sort/ksort.c

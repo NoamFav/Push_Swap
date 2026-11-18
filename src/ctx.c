@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 18:51:51 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/17 20:58:18 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/18 15:54:57 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	get_rank(t_stack *s, int *values, size_t n)
 	while (++i < n)
 	{
 		count = 0;
-		j = (size_t)-1;
+		j = (size_t) - 1;
 		while (++j < n)
 			if (values[j] < values[i])
 				count++;

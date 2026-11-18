@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 20:37:58 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/17 20:54:51 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/18 15:46:17 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 
 size_t	ft_strlen(const char *str);
 int		ft_strcmp(const char *a, const char *b);
-int		ft_printf(const char *format, ...);
-int		dispatch(char c, va_list *ap);
-int		put_base(unsigned long n, char *base);
-int		put_int(int n);
-int		put_ptr(void *p);
-int		put_str(char *str);
+int		ft_dprintf(int fd, const char *format, ...);
+int		dispatch(int fd, char c, va_list *ap);
+int		put_base(int fd, unsigned long n, char *base);
+int		put_int(int fd, int n);
+int		put_ptr(int fd, void *p);
+int		put_str(int fd, char *str);
+int		put_double(int fd, double num);
 
 #endif
