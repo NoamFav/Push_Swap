@@ -58,8 +58,8 @@ static int	read_args(int argc, char **argv, t_conf *conf, int *values)
 }
 
 /*
-returns -1 on error, 0 if nothing to sort, 1 if ctx is initialized correctly
-malloc is set to argc (and not argc - 1) to avoid malloc(0)
+** returns -1 on error, 0 if nothing to sort, 1 if ctx is initialized correctly
+** malloc is set to argc (and not argc - 1) to avoid malloc(0)
 */
 int	parse_args(int argc, char **argv, t_ctx *ctx, t_conf *conf)
 {
