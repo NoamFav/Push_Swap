@@ -9,6 +9,7 @@
 /*   Updated: 2026/11/17 20:39:10 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_decimal_to_base(char res[], unsigned long n, char *base)

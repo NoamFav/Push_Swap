@@ -9,9 +9,12 @@
 /*   Updated: 2026/11/17 18:56:42 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef OPS_H
 # define OPS_H
+
 # include "push_swap.h"
+
 /* op functions: */
 /* Push */
 void		push_a(t_ctx *ctx);
