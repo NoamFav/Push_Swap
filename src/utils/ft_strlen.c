@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajanssen <ajanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/17 22:27:35 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/17 22:27:40 by ajanssen         ###   ########.fr       */
+/*   Created: 2026/11/14 14:15:25 by nfavier           #+#    #+#             */
+/*   Updated: 2026/11/14 14:15:25 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *a, const char *b)
+#include "utils.h"
+
+size_t	ft_strlen(const char *str)
 {
-	while (*a && *a == *b)
+	size_t	count;
+
+	count = 0;
+	while (*str)
 	{
-		a++;
-		b++;
+		count++;
+		str++;
 	}
-	return ((unsigned char)*a - (unsigned char)*b);
+	return (count);
 }

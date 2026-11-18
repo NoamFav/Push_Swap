@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   printf_helpers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noamfavier <noam.favier@learner.42.tech>   +#+  +:+       +#+        */
+/*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/05 23:28:19 by noamfavier        #+#    #+#             */
-/*   Updated: 2026/11/17 20:39:10 by nfavier          ###   ########.fr       */
+/*   Created: 2026/11/05 23:28:19 by nfavier           #+#    #+#             */
+/*   Updated: 2026/11/18 15:07:19 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "utils.h"
 
 static int	ft_decimal_to_base(char res[], unsigned long n, char *base)
 {

@@ -6,12 +6,12 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 20:19:18 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/17 20:51:56 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/18 15:06:11 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
+#include "utils.h"
 
 const char	*op_name(t_ops op)
 {

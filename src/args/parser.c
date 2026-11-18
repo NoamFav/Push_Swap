@@ -6,12 +6,12 @@
 /*   By: ajanssen <ajanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 20:59:22 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/17 20:59:24 by ajanssen         ###   ########.fr       */
+/*   Updated: 2026/11/18 15:05:52 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
+#include "utils.h"
 
 static bool	parse_option(const char *arg, t_conf *conf)
 {

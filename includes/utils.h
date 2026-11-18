@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef UTILS_H
+# define UTILS_H
 
 # include <stdlib.h>
 # include <stdarg.h>
@@ -29,4 +29,5 @@ int		put_base(unsigned long n, char *base);
 int		put_int(int n);
 int		put_ptr(void *p);
 int		put_str(char *str);
+
 #endif
