@@ -13,7 +13,6 @@
 #include "push_swap.h"
 
 // per instructions, no numbers (ret = 0) must exit silently
-// OBVIOUSLY NOT FINISHED
 int	main(int argc, char **argv)
 {
 	int		ret;
@@ -28,4 +27,12 @@ int	main(int argc, char **argv)
 	}
 	if (ret == 0)
 		return (0);
+	conf.disorder = compute_disorder(&ctx);
+	if (!sort_radix(&ctx) || !ops_flush(&ctx))
+	{
+		ctx_free(&ctx);
+		return (1);
+	}
+	ctx_free(&ctx);
+	return (0);
 }
