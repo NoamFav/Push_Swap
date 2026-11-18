@@ -6,11 +6,12 @@
 /*   By: ajanssen <ajanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:46:56 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/17 22:46:57 by ajanssen         ###   ########.fr       */
+/*   Updated: 2026/11/18 23:41:31 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "sort.h"
 
 // per instructions, no numbers (ret = 0) must exit silently
 int	main(int argc, char **argv)
@@ -28,7 +29,7 @@ int	main(int argc, char **argv)
 	if (ret == 0)
 		return (0);
 	conf.disorder = compute_disorder(&ctx);
-	if (!sort_radix(&ctx) || !ops_flush(&ctx))
+	if (!quick_sort(&ctx) || !ops_flush(&ctx))
 	{
 		ctx_free(&ctx);
 		return (1);

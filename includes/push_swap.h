@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 18:35:01 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/18 15:59:58 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/18 22:31:54 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef void	(*t_opfn)(t_ctx *);
 bool		ctx_init(t_ctx *ctx, int *values, size_t n);
 void		ctx_free(t_ctx *ctx);
 double		compute_disorder(t_ctx *c);
-bool		sort_radix(t_ctx *ctx);
 
 /* parsing */
 int			parse_args(int argc, char **argv, t_ctx *ctx, t_conf *conf);
