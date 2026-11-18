@@ -6,20 +6,36 @@
 /*   By: ajanssen <ajanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 01:04:33 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/18 01:04:35 by ajanssen         ###   ########.fr       */
+/*   Updated: 2026/11/18 22:19:13 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* f**ck**g norminette that wants curly braces */
-/* the PA pass can be optimized */
-static bool	radix_pass(t_ctx *ctx, int bit, int n)
+static bool	push_back(t_ctx *ctx, int bit, bool last)
 {
-	int	i;
+	size_t	k;
 
-	i = -1;
-	while (++i < n)
+	k = ctx->b.curr_size;
+	while (k--)
+	{
+		if (last || (stack_get(&ctx->b, 0) >> (bit + 1)) & 1)
+		{
+			if (!do_op(ctx, PA))
+				return (false);
+		}
+		else if (!do_op(ctx, RB))
+			return (false);
+	}
+	return (true);
+}
+
+static bool	radix_pass(t_ctx *ctx, int bit, bool last)
+{
+	size_t	k;
+
+	k = ctx->a.curr_size;
+	while (k--)
 	{
 		if ((stack_get(&ctx->a, 0) >> bit) & 1)
 		{
@@ -29,10 +45,7 @@ static bool	radix_pass(t_ctx *ctx, int bit, int n)
 		else if (!do_op(ctx, PB))
 			return (false);
 	}
-	while (ctx->b.curr_size > 0)
-		if (!do_op(ctx, PA))
-			return (false);
-	return (true);
+	return (push_back(ctx, bit, last));
 }
 
 /*
@@ -45,16 +58,19 @@ static bool	radix_pass(t_ctx *ctx, int bit, int n)
 */
 bool	sort_radix(t_ctx *ctx)
 {
-	int	n;
+	int	bits;
 	int	bit;
 
-	n = ctx->a.curr_size;
-	bit = 0;
-	while (!stack_is_sorted(&ctx->a))
+	bits = 0;
+	while (((ctx->a.curr_size - 1) >> bits) != 0)
+		bits++;
+	bit = -1;
+	while (++bit < bits)
 	{
-		if (!radix_pass(ctx, bit, n))
+		if (ctx->b.curr_size == 0 && stack_is_sorted(&ctx->a))
+			return (true);
+		if (!radix_pass(ctx, bit, bit + 1 == bits))
 			return (false);
-		bit++;
 	}
 	return (true);
 }
