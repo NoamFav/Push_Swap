@@ -49,11 +49,9 @@ bool	ctx_init(t_ctx *ctx, int *values, size_t n)
 		|| !opbuf_init(&ctx->ops, n))
 	{
 		ctx_free(ctx);
-		free(values);
 		return (false);
 	}
 	get_rank(&ctx->a, values, n);
-	free(values);
 	return (true);
 }
 

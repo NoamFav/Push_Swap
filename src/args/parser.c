@@ -76,6 +76,7 @@ int	parse_args(int argc, char **argv, t_ctx *ctx, t_conf *conf)
 	n = read_args(argc, argv, conf, values);
 	if (n > 0 && (has_dup(values, n) || !ctx_init(ctx, values, n)))
 		n = -1;
+	free(values);
 	if (n < 0)
 		return (-1);
 	return (n > 0);
