@@ -28,7 +28,8 @@ bool	sort_run(t_ctx *ctx, t_conf *conf)
 {
 	conf->picked = choose_strategy(conf);
 	if (conf->picked == SIMPLE)
-		return (sort_selection(ctx));
+		// return (sort_selection(ctx));
+		return (sort_bubble(ctx));
 	if (conf->picked == MEDIUM)
 		return (sort_radix(ctx));
 	return (quick_sort(ctx));

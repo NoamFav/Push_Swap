@@ -5,7 +5,7 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror -Iincludes -MMD -MP
 SRC_DIR	= src
 OBJ_DIR	= obj
-SRCS	= push_swap.c \
+SRCS	= main.c \
 		  stack.c \
 		  ctx.c \
 		  disorder.c \
