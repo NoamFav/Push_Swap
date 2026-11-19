@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	if (ret == 0)
 		return (0);
 	conf.disorder = compute_disorder(&ctx);
-	if (!quick_sort(&ctx) || !ops_flush(&ctx))
+	if (!quick_sort(&ctx) || !ops_clean(&ctx) || !ops_flush(&ctx))
 	{
 		ctx_free(&ctx);
 		return (1);

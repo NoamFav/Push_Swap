@@ -122,7 +122,7 @@ void		opbuf_free(t_opbuf *buf);
 bool		do_op(t_ctx *ctx, t_ops op);
 
 /* output */
-const char	*op_name(t_ops op);
 bool		ops_flush(t_ctx *ctx);
+bool		ops_clean(t_ctx *ctx);
 
 #endif
