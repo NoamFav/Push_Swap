@@ -12,19 +12,29 @@
 
 #include "sort.h"
 
+static bool	gt(t_ctx *ctx, size_t i, size_t j)
+{
+	return (stack_get(&ctx->a, i) > stack_get(&ctx->a, j));
+}
+
 bool	sort_small_a(t_ctx *ctx, int k)
 {
-	if (k >= 2 && stack_get(&ctx->a, 0) > stack_get(&ctx->a, 1))
-		if (!do_op(ctx, SA))
+	if (k == 3 && ctx->a.curr_size == 3)
+	{
+		if (gt(ctx, 0, 1) && gt(ctx, 0, 2) && !do_op(ctx, RA))
 			return (false);
+		if (gt(ctx, 1, 2) && !do_op(ctx, RRA))
+			return (false);
+	}
+	if (k >= 2 && gt(ctx, 0, 1) && !do_op(ctx, SA))
+		return (false);
 	if (k == 3)
 	{
-		if (stack_get(&ctx->a, 1) > stack_get(&ctx->a, 2))
-			if (!(do_op(ctx, PB) && do_op(ctx, SA) && do_op(ctx, PA)))
-				return (false);
-		if (stack_get(&ctx->a, 0) > stack_get(&ctx->a, 1))
-			if (!do_op(ctx, SA))
-				return (false);
+		if (gt(ctx, 1, 2)
+			&& !(do_op(ctx, PB) && do_op(ctx, SA) && do_op(ctx, PA)))
+			return (false);
+		if (gt(ctx, 0, 1) && !do_op(ctx, SA))
+			return (false);
 	}
 	return (true);
 }
