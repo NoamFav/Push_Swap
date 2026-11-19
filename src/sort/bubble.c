@@ -6,7 +6,7 @@
 /*   By: alexandre.janssen@learner.42.tech          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 09:33:58 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/19 11:22:25 by ajanssen         ###   ########.fr       */
+/*   Updated: 2026/11/19 14:54:20 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,3 @@ bool	sort_bubble(t_ctx *ctx)
 	}
 	return (true);
 }
-
-

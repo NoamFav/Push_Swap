@@ -6,7 +6,7 @@
 /*   By: ajanssen <ajanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:46:56 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/19 11:15:13 by ajanssen         ###   ########.fr       */
+/*   Updated: 2026/11/19 15:02:05 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,18 @@ static t_strategy	choose_strategy(const t_conf *conf)
 
 bool	sort_run(t_ctx *ctx, t_conf *conf)
 {
+	if (stack_is_sorted(&ctx->a))
+		return (true);
+	if (ctx->a.curr_size <= 3)
+		return (sort_small_a(ctx, ctx->a.curr_size));
+	else if (ctx->a.curr_size <= 5)
+		return (sort_quicksort(ctx));
 	conf->picked = choose_strategy(conf);
 	if (conf->picked == SIMPLE)
-		// return (sort_selection(ctx));
-		return (sort_bubble(ctx));
+		return (sort_selection(ctx));
 	if (conf->picked == MEDIUM)
 		return (sort_radix(ctx));
-	return (quick_sort(ctx));
+	return (sort_quicksort(ctx));
 }
 
 // per instructions, no numbers (ret = 0) must exit silently

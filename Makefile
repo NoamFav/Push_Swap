@@ -24,11 +24,9 @@ SRCS	= main.c \
 		  output/output.c \
 		  sort/bubble.c \
 		  sort/selection.c \
-		  sort/simpminmax.c \
 		  sort/radix.c \
-		  sort/quicksort_3way.c \
-		  sort/quicksort_3way_utils.c \
-		  sort/ksort.c
+		  sort/quicksort.c \
+		  sort/utils.c 
 OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 DEPS	= $(OBJS:.o=.d)
 
