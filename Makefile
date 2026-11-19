@@ -22,6 +22,8 @@ SRCS	= push_swap.c \
 		  utils/dprintf_helpers.c \
 		  utils/dprintf_dispatch.c \
 		  output/output.c \
+		  sort/bubble.c \
+		  sort/selection.c \
 		  sort/simpminmax.c \
 		  sort/radix.c \
 		  sort/quicksort_3way.c \

@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 22:31:06 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/19 00:21:38 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/19 11:14:51 by ajanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define SORT_H
 # include "push_swap.h"
 
+bool	sort_run(t_ctx *ctx, t_conf *conf);
+bool	sort_bubble(t_ctx *ctx);
+bool	sort_selection(t_ctx *ctx);
 bool	sort_radix(t_ctx *ctx);
 
 /* Quickway sort and its little happy family*/
