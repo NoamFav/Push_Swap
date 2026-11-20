@@ -12,6 +12,7 @@
 
 #include "ops.h"
 
+/* pushes s2 onto s1. empty s2 = no-op, like the subject says */
 static void	push(t_stack *s1, t_stack *s2)
 {
 	if (s2->curr_size == 0)

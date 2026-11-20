@@ -12,6 +12,7 @@
 
 #include "utils.h"
 
+/* printf but to any fd. returns chars written, -1 on a failed write */
 int	ft_dprintf(int fd, const char *format, ...)
 {
 	va_list	ap;

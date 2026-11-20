@@ -12,6 +12,10 @@
 
 #include "push_swap.h"
 
+/*
+** raw ints -> ranks 0..n-1. O(n²) but n is 500, and every sort after
+** this gets to assume no gaps
+*/
 static void	get_rank(t_stack *s, int *values, size_t n)
 {
 	size_t	i;
@@ -30,6 +34,7 @@ static void	get_rank(t_stack *s, int *values, size_t n)
 	}
 }
 
+/* cap = n for both stacks, so either one can hold everything */
 bool	stack_init(t_stack *s, size_t cap, size_t curr)
 {
 	s->value = malloc(sizeof(int) * cap);
@@ -41,6 +46,7 @@ bool	stack_init(t_stack *s, size_t cap, size_t curr)
 	return (true);
 }
 
+/* doesn't own values, parse_args frees them either way */
 bool	ctx_init(t_ctx *ctx, int *values, size_t n)
 {
 	*ctx = (t_ctx){0};
@@ -55,6 +61,7 @@ bool	ctx_init(t_ctx *ctx, int *values, size_t n)
 	return (true);
 }
 
+/* safe on a half-built ctx, free(NULL) is a no-op */
 void	ctx_free(t_ctx *ctx)
 {
 	free(ctx->a.value);

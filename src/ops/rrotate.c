@@ -12,6 +12,7 @@
 
 #include "ops.h"
 
+/* mirror of rotate: top steps back, the old bottom lands in it */
 static void	rrotate(t_stack *s)
 {
 	if (s->curr_size < 2)

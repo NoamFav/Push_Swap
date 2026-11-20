@@ -12,6 +12,7 @@
 
 #include "utils.h"
 
+/* %P is ours: a 0..1 ratio shown as a percent. not %f, that would lie */
 int	dispatch(int fd, char c, va_list *ap)
 {
 	if (c == 'c')
@@ -35,6 +36,7 @@ int	dispatch(int fd, char c, va_list *ap)
 	return (0);
 }
 
+/* long so INT_MIN survives the minus */
 int	put_int(int fd, int n)
 {
 	long	nb;
@@ -54,6 +56,7 @@ int	put_int(int fd, int n)
 	return (ret + sign);
 }
 
+/* (nil) and (null) like glibc does */
 int	put_ptr(int fd, void *p)
 {
 	int	count;
@@ -75,6 +78,10 @@ int	put_str(int fd, char *str)
 	return (write(fd, str, ft_strlen(str)));
 }
 
+/*
+** ratio -> xx.yy, rounded. digits printed one by one for the
+** zero padding, since there is no width specifier
+*/
 int	put_double(int fd, double num)
 {
 	int	pct;

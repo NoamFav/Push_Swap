@@ -12,6 +12,7 @@
 
 #include "ops.h"
 
+/* < 2 elements: nothing to swap, nothing happens */
 static void	swap(t_stack *s)
 {
 	int	tmp;

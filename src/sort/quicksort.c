@@ -6,12 +6,19 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 22:25:33 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/19 15:02:14 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:15:58 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
+/*
+** 3-way quicksort on two stacks. a chunk is ranks low..high sitting on top
+** of a stack, so pivots are just arithmetic and every split is exact thirds.
+** always recurse max -> mid -> min: a is built from the bottom up
+*/
+
+/* top third: ra (count[0])   mid: pb   low: pb + rb (count[1]) */
 bool	partition_a(t_ctx *ctx, t_quicksort *qs)
 {
 	while (qs->k--)
@@ -33,6 +40,7 @@ bool	partition_a(t_ctx *ctx, t_quicksort *qs)
 	return (true);
 }
 
+/* top third: pa   mid: pa + ra (count[0])   low: rb (count[1]) */
 bool	partition_b(t_ctx *ctx, t_quicksort *qs)
 {
 	while (qs->k--)
@@ -54,6 +62,7 @@ bool	partition_b(t_ctx *ctx, t_quicksort *qs)
 	return (true);
 }
 
+/* chunk on top of a. the counts are the piles parked at the bottom */
 bool	sort_a(t_ctx *ctx, size_t low, size_t high)
 {
 	t_quicksort	qs;
@@ -73,6 +82,7 @@ bool	sort_a(t_ctx *ctx, size_t low, size_t high)
 		&& sort_b(ctx, low, qs.p[0] - 1));
 }
 
+/* chunk on top of b. top third already landed on a, nothing to rotate */
 bool	sort_b(t_ctx *ctx, size_t low, size_t high)
 {
 	t_quicksort	qs;
@@ -92,6 +102,7 @@ bool	sort_b(t_ctx *ctx, size_t low, size_t high)
 		&& sort_b(ctx, low, qs.p[0] - 1));
 }
 
+/* the whole input is one chunk */
 bool	sort_quicksort(t_ctx *ctx)
 {
 	return (sort_a(ctx, 0, ctx->a.cap - 1));

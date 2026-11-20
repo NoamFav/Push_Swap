@@ -12,6 +12,10 @@
 
 #include "ops.h"
 
+/*
+** copy top into the slot past the bottom, then move top down.
+** full stack: that slot is top itself, still works
+*/
 static void	rotate(t_stack *s)
 {
 	s->value[(s->top + s->curr_size) % s->cap] = s->value[s->top];

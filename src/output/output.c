@@ -13,6 +13,7 @@
 #include "push_swap.h"
 #include "utils.h"
 
+/* t_ops -> name, same order as the enum */
 static const char	*op_name(t_ops op)
 {
 	static const char *const	table[OP_COUNT] = {
@@ -25,6 +26,7 @@ static const char	*op_name(t_ops op)
 	return (table[op]);
 }
 
+/* two neighbours that fit in one op. OP_COUNT = no merge */
 static t_ops	merge(t_ops a, t_ops b)
 {
 	if ((a == SA && b == SB) || (a == SB && b == SA))
@@ -36,6 +38,10 @@ static t_ops	merge(t_ops a, t_ops b)
 	return (OP_COUNT);
 }
 
+/*
+** two neighbours that undo each other. pb pa only cancels if the pb
+** moved something, and no sort ever pushes from an empty stack
+*/
 static bool	cancels(t_ops a, t_ops b)
 {
 	return ((a == PA && b == PB) || (a == PB && b == PA)
@@ -47,6 +53,7 @@ static bool	cancels(t_ops a, t_ops b)
 		|| (a == SS && b == SS));
 }
 
+/* one op per line on stdout and nothing else, the checker is picky, can't add colors */
 bool	ops_flush(t_ctx *ctx)
 {
 	t_opbuf		*ops;
@@ -64,6 +71,11 @@ bool	ops_flush(t_ctx *ctx)
 	return (true);
 }
 
+/*
+** peephole pass, in place: i reads, w writes, w never passes i.
+** compared against the last kept op, so cancels cascade:
+** ra pb pa rra -> nothing. recounts after so --bench tells the truth
+*/
 bool	ops_clean(t_ctx *ctx)
 {
 	size_t	i;

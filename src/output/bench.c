@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 15:38:56 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/20 16:05:55 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:39:29 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ static const char	*strat_class(t_strategy s)
 	return (classes[s]);
 }
 
+/*
+** stderr only, after the ops. name = what was asked for,
+** class = what actually ran (adaptive picks one of the three)
+*/
 bool	bench_print(const t_ctx *ctx, const t_conf *conf)
 {
 	const int	*c;

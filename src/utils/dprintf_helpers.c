@@ -12,6 +12,7 @@
 
 #include "utils.h"
 
+/* n written in base, backwards, then flipped */
 static int	ft_decimal_to_base(char res[], unsigned long n, char *base)
 {
 	size_t	i;
@@ -38,6 +39,7 @@ static int	ft_decimal_to_base(char res[], unsigned long n, char *base)
 	return (len);
 }
 
+/* buf[65]: 64 binary digits for an unsigned long, + 1 to be safe */
 int	put_base(int fd, unsigned long n, char *base)
 {
 	char	buf[65];

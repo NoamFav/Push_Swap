@@ -12,6 +12,7 @@
 
 #include "ops.h"
 
+/* grows 1.5x. hand-rolled since realloc isn't on the allowed list */
 static bool	expand_buff(t_opbuf *buf)
 {
 	unsigned char	*tmp;
@@ -33,6 +34,7 @@ static bool	expand_buff(t_opbuf *buf)
 	return (true);
 }
 
+/* starts at n, a sort basically never needs fewer ops than that */
 bool	opbuf_init(t_opbuf *buf, size_t n)
 {
 	if (n == 0)
@@ -60,6 +62,10 @@ void	opbuf_free(t_opbuf *buf)
 	*buf = (t_opbuf){NULL, 0, 0};
 }
 
+/*
+** the only way anything moves: record, count, apply.
+** table order = t_ops order, keep them in sync
+*/
 bool	do_op(t_ctx *ctx, t_ops op)
 {
 	static const t_opfn	table[OP_COUNT] = {

@@ -104,8 +104,6 @@ bool		has_dup(const int *v, size_t n);
 
 /* read-only peeking. i is the position from the top, 0 = top */
 int			stack_get(const t_stack *s, size_t i);
-size_t		stack_min_pos(const t_stack *s);
-size_t		stack_max_pos(const t_stack *s);
 bool		stack_is_sorted(const t_stack *s);
 
 /* stack edit, push becomes O(1) */
