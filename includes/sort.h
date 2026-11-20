@@ -6,13 +6,17 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 22:31:06 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/19 14:53:04 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/20 11:06:29 by ajanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SORT_H
 # define SORT_H
 # include "push_swap.h"
+
+# ifndef KSORT_SQRT_FACTOR
+#  define KSORT_SQRT_FACTOR 2
+# endif
 
 typedef struct s_quicksort
 {
@@ -30,6 +34,7 @@ bool	sort_small_b(t_ctx *ctx, int k);
 bool	sort_run(t_ctx *ctx, t_conf *conf);
 bool	sort_bubble(t_ctx *ctx);
 bool	sort_selection(t_ctx *ctx);
+bool	sort_k(t_ctx *ctx);
 bool	sort_radix(t_ctx *ctx);
 bool	sort_quicksort(t_ctx *ctx);
 

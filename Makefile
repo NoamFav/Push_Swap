@@ -24,6 +24,7 @@ SRCS	= main.c \
 		  output/output.c \
 		  sort/bubble.c \
 		  sort/selection.c \
+		  sort/ksort.c \
 		  sort/radix.c \
 		  sort/quicksort.c \
 		  sort/utils.c 

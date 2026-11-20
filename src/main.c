@@ -6,7 +6,7 @@
 /*   By: ajanssen <ajanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:46:56 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/19 15:02:05 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/20 11:06:39 by ajanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	sort_run(t_ctx *ctx, t_conf *conf)
 	if (conf->picked == SIMPLE)
 		return (sort_selection(ctx));
 	if (conf->picked == MEDIUM)
-		return (sort_radix(ctx));
+		return (sort_k(ctx));
 	return (sort_quicksort(ctx));
 }
 
