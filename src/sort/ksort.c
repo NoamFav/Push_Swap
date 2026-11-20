@@ -6,7 +6,7 @@
 /*   By: alexandre.janssen@learner.42.tech          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/19 20:59:50 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/20 11:06:48 by ajanssen         ###   ########.fr       */
+/*   Updated: 2026/11/20 15:19:14 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static size_t	floor_sqrt(size_t n)
 	size_t	r;
 
 	r = 1;
-	while ((r + 1) * (r + 1) <= n)
+	while (r * r <= n)
 		r++;
-	return (r);
+	return (r - 1);
 }
 
 static size_t	max_pos(const t_stack *s)

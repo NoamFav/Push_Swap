@@ -6,6 +6,7 @@
 #   ./test/test.sh 5 --leaks       also run valgrind / leaks on a few cases
 # worst inputs and KO inputs are saved in test/logs/ to replay them
 
+make
 cd "$(dirname "$0")/.." || exit 1
 PS=./push_swap
 CHECKER=./test/checker.py
@@ -29,10 +30,6 @@ FAILS=0
 TMP=$(mktemp)
 trap 'rm -f "$TMP"' EXIT
 
-[[ -x $PS ]] || {
-    echo "${RED}no $PS, run make first${RST}"
-    exit 1
-}
 mkdir -p "$LOGS"
 
 # grade <n> <ops>  -> sets COL and LAB
