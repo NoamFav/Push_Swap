@@ -39,6 +39,7 @@ test/logs/
 *.x86_64
 *.hex
 push_swap
+test/
 
 # Debug files
 *.dSYM/

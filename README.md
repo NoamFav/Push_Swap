@@ -49,11 +49,7 @@ flowchart LR
     B --> C[disorder]
     C --> D{"sorted ?"}
     D -- sorted --> H
-    D -- n ≤ 3 --> S3["sort3, ≤ 2 ops"]
-    D -- n ≤ 5 --> Q[quicksort]
     D -- otherwise --> E[strategy]
-    S3 --> F
-    Q --> F
     E --> F[peephole cleanup]
     F --> G[print ops]
     G --> H["--bench on stderr"]
@@ -68,8 +64,6 @@ flowchart LR
   each other (`pa pb`, `ra rra`, …) and merges pairs that fit in one op (`ra rb` → `rr`). It is compared
   against the last _kept_ op, so cancellations cascade (`ra pb pa rra` → nothing). It saves ~100 ops on
   100 numbers and applies to every strategy.
-- **Small inputs** skip the strategies: 3 numbers take at most 2 ops, 5 take at most 11 (checked on
-  all 120 permutations).
 
 ### Disorder
 
@@ -185,10 +179,10 @@ bytes for selection in the worst case. Everything else is O(1).
 
 Random inputs, default flag (adaptive), measured with the official checker:
 
-| n   | average | worst | target for "excellent" |
-| --- | ------- | ----- | ---------------------- |
-| 100 | 584     | 661   | < 700                  |
-| 500 | 4,559   | 4,912 | < 5,500                |
+| n   | runs | average | worst | target for "excellent" |
+| --- | ---- | ------- | ----- | ---------------------- |
+| 100 | 1000 | 597     | 673   | < 700                  |
+| 500 | 300  | 4,675   | 5,083 | < 5,500                |
 
 `--bench` example (500 random numbers):
 
