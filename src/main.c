@@ -26,6 +26,8 @@ static t_strategy	choose_strategy(const t_conf *conf)
 
 bool	sort_run(t_ctx *ctx, t_conf *conf)
 {
+	if (stack_is_sorted(&ctx->a))
+		return (true);
 	conf->picked = choose_strategy(conf);
 	if (conf->picked == SIMPLE)
 		return (sort_selection(ctx));

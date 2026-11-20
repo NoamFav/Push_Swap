@@ -1,4 +1,4 @@
-*This activity has been created as part of the 42 curriculum by nfavier, ajanssen.*
+_This activity has been created as part of the 42 curriculum by nfavier, ajanssen._
 
 # push_swap
 
@@ -11,12 +11,12 @@ find that leaves `a` sorted (smallest on top) and `b` empty. Fewer operations me
 This version of the project asks for **four strategies**, one per complexity class, plus an adaptive mode
 that measures how sorted the input already is and picks the strategy that fits:
 
-| Strategy | Algorithm | Class (in operations) |
-|---|---|---|
-| `--simple` | selection sort (min extraction) | O(n²) |
-| `--medium` | k-sort (sliding-window chunk sort) | O(n√n) |
-| `--complex` | 3-way quicksort over two stacks | O(n log n) |
-| `--adaptive` (default) | picks one of the three above by disorder | depends on the input |
+| Strategy               | Algorithm                                | Class (in operations) |
+| ---------------------- | ---------------------------------------- | --------------------- |
+| `--simple`             | selection sort (min extraction)          | O(n²)                 |
+| `--medium`             | k-sort (sliding-window chunk sort)       | O(n√n)                |
+| `--complex`            | 3-way quicksort over two stacks          | O(n log n)            |
+| `--adaptive` (default) | picks one of the three above by disorder | depends on the input  |
 
 ## Instructions
 
@@ -47,7 +47,7 @@ numbers in any order. If several strategy flags are given, the last one wins.
 flowchart LR
     A[parse args] --> B["values → ranks 0..n-1"]
     B --> C[disorder]
-    C --> D{"sorted or n ≤ 5?"}
+    C --> D{"sorted ?"}
     D -- sorted --> H
     D -- n ≤ 3 --> S3["sort3, ≤ 2 ops"]
     D -- n ≤ 5 --> Q[quicksort]
@@ -66,7 +66,7 @@ flowchart LR
   The sort and the output are fully separated: nothing is printed until the sort is done.
 - **Peephole cleanup.** Before printing, one in-place pass over the buffer removes pairs that undo
   each other (`pa pb`, `ra rra`, …) and merges pairs that fit in one op (`ra rb` → `rr`). It is compared
-  against the last *kept* op, so cancellations cascade (`ra pb pa rra` → nothing). It saves ~100 ops on
+  against the last _kept_ op, so cancellations cascade (`ra pb pa rra` → nothing). It saves ~100 ops on
   100 numbers and applies to every strategy.
 - **Small inputs** skip the strategies: 3 numbers take at most 2 ops, 5 take at most 11 (checked on
   all 120 permutations).
@@ -117,7 +117,7 @@ of the top: O(n·k). With k ≈ √n, both phases are **O(n√n)**.
 
 ### Complex: 3-way quicksort, O(n log n)
 
-A *chunk* is the set of ranks `low..high` sitting together at the top of a stack. Because ranks have no
+A _chunk_ is the set of ranks `low..high` sitting together at the top of a stack. Because ranks have no
 gaps, the two pivots are exact: `p0 = low + k/3` and `p1 = low + 2k/3`. Every split gives three equal
 thirds.
 
@@ -165,11 +165,11 @@ xychart-beta
 
 <sub>Lines, top to bottom at 0.45: selection, quicksort, k-sort.</sub>
 
-| n = 500 | disorder 0.05 | 0.15 | 0.30 | random (~0.5) |
-|---|---|---|---|---|
-| selection | 4,237 | 15,806 | 26,953 | 32,237 |
-| k-sort | 1,796 | 3,918 | 4,766 | 4,911 |
-| quicksort | 4,474 | 4,538 | 4,499 | **4,458** |
+| n = 500   | disorder 0.05 | 0.15   | 0.30   | random (~0.5) |
+| --------- | ------------- | ------ | ------ | ------------- |
+| selection | 4,237         | 15,806 | 26,953 | 32,237        |
+| k-sort    | 1,796         | 3,918  | 4,766  | 4,911         |
+| quicksort | 4,474         | 4,538  | 4,499  | **4,458**     |
 
 - **≥ 0.5:** quicksort, the best on random input at 500 and identical from run to run.
 - **0.2 to 0.5:** k-sort uses the existing order. It beats quicksort everywhere at 100 and in the lower
@@ -185,10 +185,10 @@ bytes for selection in the worst case. Everything else is O(1).
 
 Random inputs, default flag (adaptive), measured with the official checker:
 
-| n | average | worst | target for "excellent" |
-|---|---|---|---|
-| 100 | 584 | 661 | < 700 |
-| 500 | 4,559 | 4,912 | < 5,500 |
+| n   | average | worst | target for "excellent" |
+| --- | ------- | ----- | ---------------------- |
+| 100 | 584     | 661   | < 700                  |
+| 500 | 4,559   | 4,912 | < 5,500                |
 
 `--bench` example (500 random numbers):
 
@@ -202,23 +202,23 @@ Random inputs, default flag (adaptive), measured with the official checker:
 
 ## Contributions
 
-| | nfavier | ajanssen |
-|---|---|---|
-| Core | ring-buffer stacks, the 11 ops, dispatcher, op buffer, rank normalisation (`src/stack.c`, `src/ops/`, `src/ctx.c`) | argument parsing and validation (`src/args/`), Makefile |
-| Sorting | 3-way quicksort and base cases (`src/sort/quicksort.c`, `src/sort/utils.c`), radix optimisation | selection, bubble and k-sort (`src/sort/selection.c`, `bubble.c`, `ksort.c`), original radix |
-| Strategy | small-input front door | disorder metric (`src/disorder.c`), adaptive selection (`src/main.c`) |
-| Output | peephole cleanup, `--bench`, `ft_dprintf` (`src/output/`, `src/utils/`) | |
+|          | nfavier                                                                                                            | ajanssen                                                                                     |
+| -------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| Core     | ring-buffer stacks, the 11 ops, dispatcher, op buffer, rank normalisation (`src/stack.c`, `src/ops/`, `src/ctx.c`) | argument parsing and validation (`src/args/`), Makefile                                      |
+| Sorting  | 3-way quicksort and base cases (`src/sort/quicksort.c`, `src/sort/utils.c`), radix optimisation                    | selection, bubble and k-sort (`src/sort/selection.c`, `bubble.c`, `ksort.c`), original radix |
+| Strategy | small-input front door                                                                                             | disorder metric (`src/disorder.c`), adaptive selection (`src/main.c`)                        |
+| Output   | peephole cleanup, `--bench`, `ft_dprintf` (`src/output/`, `src/utils/`)                                            |                                                                                              |
 
 Bubble sort and radix sort are kept as baselines we measured against, not used by any strategy.
 Both of us reviewed and can explain the whole codebase.
 
 ## Resources
 
-- D. Knuth, *The Art of Computer Programming, Vol. 3: Sorting and Searching*
-- Cormen, Leiserson, Rivest, Stein, *Introduction to Algorithms*: quicksort, radix sort, lower bounds
+- D. Knuth, _The Art of Computer Programming, Vol. 3: Sorting and Searching_
+- Cormen, Leiserson, Rivest, Stein, _Introduction to Algorithms_: quicksort, radix sort, lower bounds
 - [Quicksort](https://en.wikipedia.org/wiki/Quicksort) and the [Dutch national flag problem](https://en.wikipedia.org/wiki/Dutch_national_flag_problem) (3-way partitioning)
 - [Selection sort](https://en.wikipedia.org/wiki/Selection_sort), [Bucket sort](https://en.wikipedia.org/wiki/Bucket_sort), [Radix sort](https://en.wikipedia.org/wiki/Radix_sort)
-- [inversions](https://en.wikipedia.org/wiki/inversion_(discrete_mathematics)) (the disorder metric)
+- [inversions](<https://en.wikipedia.org/wiki/inversion_(discrete_mathematics)>) (the disorder metric)
 - [circular buffer](https://en.wikipedia.org/wiki/circular_buffer), [peephole optimization](https://en.wikipedia.org/wiki/peephole_optimization)
 
 ### AI usage
