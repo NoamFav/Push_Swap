@@ -6,7 +6,7 @@
 /*   By: nfavier <noam.favier@learner.42.tech>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 18:35:01 by nfavier           #+#    #+#             */
-/*   Updated: 2026/11/18 22:31:54 by nfavier          ###   ########.fr       */
+/*   Updated: 2026/11/20 16:06:33 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ bool		do_op(t_ctx *ctx, t_ops op);
 /* output */
 bool		ops_flush(t_ctx *ctx);
 bool		ops_clean(t_ctx *ctx);
+bool		bench_print(const t_ctx *ctx, const t_conf *conf);
 
 #endif

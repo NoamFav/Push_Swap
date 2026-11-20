@@ -22,12 +22,13 @@ SRCS	= main.c \
 		  utils/dprintf_helpers.c \
 		  utils/dprintf_dispatch.c \
 		  output/output.c \
+		  output/bench.c \
 		  sort/bubble.c \
 		  sort/selection.c \
 		  sort/ksort.c \
 		  sort/radix.c \
 		  sort/quicksort.c \
-		  sort/utils.c 
+		  sort/utils.c
 OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 DEPS	= $(OBJS:.o=.d)
 

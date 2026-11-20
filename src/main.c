@@ -6,7 +6,7 @@
 /*   By: ajanssen <ajanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 22:46:56 by ajanssen          #+#    #+#             */
-/*   Updated: 2026/11/20 11:06:39 by ajanssen         ###   ########.fr       */
+/*   Updated: 2026/11/20 16:08:02 by nfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	main(int argc, char **argv)
 	if (ret == 0)
 		return (0);
 	conf.disorder = compute_disorder(&ctx);
-	if (!sort_run(&ctx, &conf) || !ops_clean(&ctx) || !ops_flush(&ctx))
+	if (!sort_run(&ctx, &conf) || !ops_clean(&ctx) || !ops_flush(&ctx)
+		|| (conf.bench && !bench_print(&ctx, &conf)))
 	{
 		ctx_free(&ctx);
 		return (1);
