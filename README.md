@@ -196,12 +196,13 @@ Random inputs, default flag (adaptive), measured with the official checker:
 
 ## Contributions
 
-|          | nfavier                                                                                                            | ajanssen                                                                                     |
-| -------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| Core     | ring-buffer stacks, the 11 ops, dispatcher, op buffer, rank normalisation (`src/stack.c`, `src/ops/`, `src/ctx.c`) | argument parsing and validation (`src/args/`), Makefile                                      |
-| Sorting  | 3-way quicksort and base cases (`src/sort/quicksort.c`, `src/sort/utils.c`), radix optimisation                    | selection, bubble and k-sort (`src/sort/selection.c`, `bubble.c`, `ksort.c`), original radix |
-| Strategy | small-input front door                                                                                             | disorder metric (`src/disorder.c`), adaptive selection (`src/main.c`)                        |
-| Output   | peephole cleanup, `--bench`, `ft_dprintf` (`src/output/`, `src/utils/`)                                            |                                                                                              |
+|              | nfavier                                                                                                            | ajanssen                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| Architecture | overall design: headers and shared types (`includes/`): `t_ctx`, `t_conf`, `t_opbuf`, the op and strategy enums    | —                                                                                            |
+| Core         | ring-buffer stacks, the 11 ops, dispatcher, op buffer, rank normalisation (`src/stack.c`, `src/ops/`, `src/ctx.c`) | argument parsing and validation (`src/args/`), Makefile                                      |
+| Sorting      | 3-way quicksort and base cases (`src/sort/quicksort.c`, `src/sort/utils.c`), radix optimisation                    | selection, bubble and k-sort (`src/sort/selection.c`, `bubble.c`, `ksort.c`), original radix |
+| Strategy     | —                                                                                                                  | disorder metric (`src/disorder.c`), adaptive selection (`src/main.c`)                        |
+| Output       | peephole cleanup, `--bench`, `ft_dprintf` (`src/output/`, `src/utils/`)                                            | —                                                                                            |
 
 Bubble sort and radix sort are kept as baselines we measured against, not used by any strategy.
 Both of us reviewed and can explain the whole codebase.
