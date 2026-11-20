@@ -53,7 +53,10 @@ static bool	cancels(t_ops a, t_ops b)
 		|| (a == SS && b == SS));
 }
 
-/* one op per line on stdout and nothing else, the checker is picky, can't add colors */
+/*
+** one op per line on stdout and nothing else,
+** the checker is picky, can't add colors
+*/
 bool	ops_flush(t_ctx *ctx)
 {
 	t_opbuf		*ops;

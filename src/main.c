@@ -26,12 +26,6 @@ static t_strategy	choose_strategy(const t_conf *conf)
 
 bool	sort_run(t_ctx *ctx, t_conf *conf)
 {
-	if (stack_is_sorted(&ctx->a))
-		return (true);
-	if (ctx->a.curr_size <= 3)
-		return (sort_small_a(ctx, ctx->a.curr_size));
-	else if (ctx->a.curr_size <= 5)
-		return (sort_quicksort(ctx));
 	conf->picked = choose_strategy(conf);
 	if (conf->picked == SIMPLE)
 		return (sort_selection(ctx));
